@@ -23,7 +23,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Machina\Machina.csproj" />
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if '$(SolutionName)| $(ConfigurationName)' == 'Machina|Release' (&#xD;&#xA;$(SolutionDir).nuget\nuget.exe pack $(ProjectPath) -Properties Configuration=$(ConfigurationName) -Properties Platform=$(PlatformName) -IncludeReferencedProjects -Symbols -OutputDirectory ..\packages\&#xD;&#xA;%2525SYSTEMROOT%2525\System32\WindowsPowerShell\v1.0\powershell.exe –NonInteractive –ExecutionPolicy Unrestricted –command &quot;&amp; { &amp;'$(SolutionDir)RenameSymbolsToPackage.ps1' '$(TargetName)' }&quot;&#xD;&#xA;)" />
-  </Target>
 </Project>
